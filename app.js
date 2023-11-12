@@ -20,8 +20,6 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
-const listingController = require("./controllers/listings.js");
-const wrapAsync = require("./utils/wrapAsync.js");
 
 const dbUrl = process.env.ATLASDB_URL;
 
@@ -91,7 +89,6 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.get("/",wrapAsync(listingController.index));
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
