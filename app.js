@@ -91,7 +91,7 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.get(wrapAsync(listingController.index));
+app.get("/",wrapAsync(listingController.index));
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
